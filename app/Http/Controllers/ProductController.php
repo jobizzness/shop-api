@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
+
+use App\ApiHelpers;
+use App\Http\Resources\ProductResource;
+use App\Product;
 
 class ProductController extends Controller
 {
+    use ApiHelpers;
+
     /**
-     * Display a listing of the resource.
+     * Give me the latest 100 products in my shop
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $products = Product::latest()->get();
+
+        return $this->respond(new ProductResource($products));
     }
 
     /**
