@@ -19,20 +19,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate();
 
-        return $this->respond(new ProductResource($products));
+        return $this->respond(ProductResource::collection($products));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,19 +44,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return $this->respond(new ProductResource($product));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

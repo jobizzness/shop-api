@@ -42,7 +42,7 @@ trait ApiHelpers
      */
     public function respond($data, $headers = [])
     {
-        return Response::json($data, $this->getStatusCode(), $headers);
+        return $data;
     }
 
     /**
