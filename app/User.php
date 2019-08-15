@@ -10,6 +10,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const USER_ROLES = [
+        'SHOP_OWNER' => 'SHOP_OWNER',
+        'CUSTOMER'   => 'CUSTOMER'
+    ];
+
+    public function orders()
+    { }
+
+
     /**
      * The attributes that are mass assignable.
      *
